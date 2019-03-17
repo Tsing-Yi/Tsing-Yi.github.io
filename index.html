@@ -404,10 +404,20 @@
 <li><p>在网络上传输数据时,由于数据传输的两端对应不同的硬件平台,采用的存储字节顺序可能不一致.所以在TCP/IP协议规定了在网络上必须采用网络字节顺序,也就是大端模式.对于char型数据只占一个字节,无所谓大端和小端.而对于非char类型数据,必须在数据发送到网络上之前将其转换成大端模式.接收网络数据时按符合接受主机的环境接收.</p>
 </li>
 </ul>
-<h2 id="How-to-determine"><a href="#How-to-determine" class="headerlink" title="How to determine"></a>How to determine</h2><h3 id="Using-char"><a href="#Using-char" class="headerlink" title="Using char*"></a>Using char*</h3><p>、、、<br>    int num = 1;<br>    if(<em>(char</em>)&amp;num == 1){cout&lt;&lt;”Little-Endian!”&lt;&lt;endl;}<br>    else{cout&lt;&lt;”Big-Endian!”&lt;&lt;endl}<br>、、、</p>
-<h3 id="Using-union"><a href="#Using-union" class="headerlink" title="Using union"></a>Using union</h3><p>、、、<br>//union共用同一块内存地址<br>union Endian{<br>    int long_addr;<br>    char short_addr;<br>}</p>
-<p>Endian ed;<br>ed.long_addr = 1;<br>if(ed.short_addr == 1) {cout&lt;&lt;”Little-Endian!”&lt;&lt;endl;}<br>    else{cout&lt;&lt;”Big-Endian!”&lt;&lt;endl}<br>、、、</p>
+<h2 id="How-to-determine"><a href="#How-to-determine" class="headerlink" title="How to determine"></a>How to determine</h2><h3 id="Using-char"><a href="#Using-char" class="headerlink" title="Using char*"></a>Using char*</h3><pre><code>int num = 1;
+if(*(char*)&amp;num == 1){cout&lt;&lt;&quot;Little-Endian!&quot;&lt;&lt;endl;}
+else{cout&lt;&lt;&quot;Big-Endian!&quot;&lt;&lt;endl}
+</code></pre><h3 id="Using-union"><a href="#Using-union" class="headerlink" title="Using union"></a>Using union</h3><pre><code>//union共用同一块内存地址
+union Endian{
+  int long_addr;
+  char short_addr;
+}
 
+Endian ed;
+ed.long_addr = 1;
+if(ed.short_addr == 1) {cout&lt;&lt;&quot;Little-Endian!&quot;&lt;&lt;endl;}
+else{cout&lt;&lt;&quot;Big-Endian!&quot;&lt;&lt;endl}
+</code></pre>
           
         
       
