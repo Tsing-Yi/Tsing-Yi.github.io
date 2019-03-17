@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="C++,">
 
 
 
@@ -79,14 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://Tsing-Yi.github.io/tags/index.html">
+<meta name="description" content="What is RAII Resource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏.  How to implement RAII 构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAII">
+<meta property="og:url" content="https://Tsing-Yi.github.io/2019/03/17/raii/index.html">
 <meta property="og:site_name" content="Tsing-Yi">
+<meta property="og:description" content="What is RAII Resource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏.  How to implement RAII 构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-17T10:19:01.728Z">
+<meta property="og:updated_time" content="2019-03-17T12:04:38.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="RAII">
+<meta name="twitter:description" content="What is RAII Resource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏.  How to implement RAII 构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://Tsing-Yi.github.io/tags/">
+  <link rel="canonical" href="https://Tsing-Yi.github.io/2019/03/17/raii/">
 
 
 
 
 
-  <title>tags | Tsing-Yi</title>
+  <title>RAII | Tsing-Yi</title>
   
 
 
@@ -257,40 +261,213 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/17/raii/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                1 tag in total
+          <h1 class="post-title" itemprop="name headline">RAII</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T19:36:27+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tips/" itemprop="url" rel="index">
+                    <span itemprop="name">tips</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/C/" style="font-size: 12px; color: #ccc">C++</a>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <blockquote>
+<h2 id="What-is-RAII"><a href="#What-is-RAII" class="headerlink" title="What is RAII"></a>What is RAII</h2></blockquote>
+<p><em>Resource Acquistion Is Initialzation</em>:资源获取即初始化,<em>C++</em>语言中的一个惯用法,用于管理资源,避免内存泄漏.</p>
+<blockquote>
+<h2 id="How-to-implement-RAII"><a href="#How-to-implement-RAII" class="headerlink" title="How to implement RAII"></a>How to implement RAII</h2></blockquote>
+<p>构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.</p>
+<ul>
+<li>不需要显式地释放资源;</li>
+<li>对象所需的资源在生命周期内始终有效;</li>
+<li>避免内存泄漏.</li>
+</ul>
+<blockquote>
+<h2 id="What-Is-Resource"><a href="#What-Is-Resource" class="headerlink" title="What Is Resource"></a>What Is Resource</h2></blockquote>
+<p>如内存,文件句柄,网络套接字(<em>network sockets</em>),互斥锁(<em>mutex lock</em>)等等.</p>
+<blockquote>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2></blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileRAII</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  FileRAII(File* file):file_(file)&#123;&#125;</span><br><span class="line">  ~FileRAII()&#123;fclose(file_);&#125;</span><br><span class="line">  <span class="function">File* <span class="title">Get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> file_;&#125;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  File* file_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/17/big-little-endian/" rel="next" title="Big/Little-Endian">
+                <i class="fa fa-chevron-left"></i> Big/Little-Endian
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -323,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -384,6 +570,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-RAII"><span class="nav-number">1.</span> <span class="nav-text">What is RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-implement-RAII"><span class="nav-number">2.</span> <span class="nav-text">How to implement RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Is-Resource"><span class="nav-number">3.</span> <span class="nav-text">What Is Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">4.</span> <span class="nav-text">Example</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

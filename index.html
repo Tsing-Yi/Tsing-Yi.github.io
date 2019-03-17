@@ -269,6 +269,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/17/raii/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/raii/" itemprop="url">RAII</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T19:36:27+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tips/" itemprop="url" rel="index">
+                    <span itemprop="name">tips</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<h2 id="What-is-RAII"><a href="#What-is-RAII" class="headerlink" title="What is RAII"></a>What is RAII</h2></blockquote>
+<p><em>Resource Acquistion Is Initialzation</em>:资源获取即初始化,<em>C++</em>语言中的一个惯用法,用于管理资源,避免内存泄漏.</p>
+<blockquote>
+<h2 id="How-to-implement-RAII"><a href="#How-to-implement-RAII" class="headerlink" title="How to implement RAII"></a>How to implement RAII</h2></blockquote>
+<p>构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.</p>
+<ul>
+<li>不需要显式地释放资源;</li>
+<li>对象所需的资源在生命周期内始终有效;</li>
+<li>避免内存泄漏.</li>
+</ul>
+<blockquote>
+<h2 id="What-Is-Resource"><a href="#What-Is-Resource" class="headerlink" title="What Is Resource"></a>What Is Resource</h2></blockquote>
+<p>如内存,文件句柄,网络套接字(<em>network sockets</em>),互斥锁(<em>mutex lock</em>)等等.</p>
+<blockquote>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2></blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileRAII</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  FileRAII(File* file):file_(file)&#123;&#125;</span><br><span class="line">  ~FileRAII()&#123;fclose(file_);&#125;</span><br><span class="line">  <span class="function">File* <span class="title">Get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> file_;&#125;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  File* file_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/17/big-little-endian/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -492,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
