@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="What Is Big/Little-Endian Big-Endian数据的高字节保存在内存的低地址中,而数据的低字节保存在内存的高地址中. little-Endian数据的低字节保存在内存的高地址中,而数据的高字节保存在内存的低地址中. How To memory小端低低,小端与人的逻辑顺序一致.  Why Big/Little-Endian 在操作系统中,x86和一般的OS（如window">
+<meta name="description" content="What Is PODPlian Old Data:通常用于说明一个类型的属性,尤其是用户自定义类型.  Plain表示了POD是一个普通的类型,C++常见类型都有类似属性,不像存在着虚函数和虚继承的类型那么特别. Old体现了与C的兼容性,比如可以用memcpy进行复制,用memset进行初始化等.  Why POD 字节赋值:代码中可以安全的使用memcpy和memset对POD类型进行初始化">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Big&#x2F;Little-Endian">
-<meta property="og:url" content="https://Tsing-Yi.github.io/2019/03/17/big-little-endian/index.html">
+<meta property="og:title" content="POD">
+<meta property="og:url" content="https://Tsing-Yi.github.io/2019/03/18/pod/index.html">
 <meta property="og:site_name" content="Tsing-Yi">
-<meta property="og:description" content="What Is Big/Little-Endian Big-Endian数据的高字节保存在内存的低地址中,而数据的低字节保存在内存的高地址中. little-Endian数据的低字节保存在内存的高地址中,而数据的高字节保存在内存的低地址中. How To memory小端低低,小端与人的逻辑顺序一致.  Why Big/Little-Endian 在操作系统中,x86和一般的OS（如window">
+<meta property="og:description" content="What Is PODPlian Old Data:通常用于说明一个类型的属性,尤其是用户自定义类型.  Plain表示了POD是一个普通的类型,C++常见类型都有类似属性,不像存在着虚函数和虚继承的类型那么特别. Old体现了与C的兼容性,比如可以用memcpy进行复制,用memset进行初始化等.  Why POD 字节赋值:代码中可以安全的使用memcpy和memset对POD类型进行初始化">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-18T00:59:15.199Z">
+<meta property="og:updated_time" content="2019-03-18T01:04:36.712Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Big&#x2F;Little-Endian">
-<meta name="twitter:description" content="What Is Big/Little-Endian Big-Endian数据的高字节保存在内存的低地址中,而数据的低字节保存在内存的高地址中. little-Endian数据的低字节保存在内存的高地址中,而数据的高字节保存在内存的低地址中. How To memory小端低低,小端与人的逻辑顺序一致.  Why Big/Little-Endian 在操作系统中,x86和一般的OS（如window">
+<meta name="twitter:title" content="POD">
+<meta name="twitter:description" content="What Is PODPlian Old Data:通常用于说明一个类型的属性,尤其是用户自定义类型.  Plain表示了POD是一个普通的类型,C++常见类型都有类似属性,不像存在着虚函数和虚继承的类型那么特别. Old体现了与C的兼容性,比如可以用memcpy进行复制,用memset进行初始化等.  Why POD 字节赋值:代码中可以安全的使用memcpy和memset对POD类型进行初始化">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://Tsing-Yi.github.io/2019/03/17/big-little-endian/">
+  <link rel="canonical" href="https://Tsing-Yi.github.io/2019/03/18/pod/">
 
 
 
 
 
-  <title>Big/Little-Endian | Tsing-Yi</title>
+  <title>POD | Tsing-Yi</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/17/big-little-endian/">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/18/pod/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tsing-Yi">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Big/Little-Endian</h1>
+          <h1 class="post-title" itemprop="name headline">POD</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T18:41:29+08:00">
-                2019-03-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-18T08:19:12+08:00">
+                2019-03-18
               </time>
             
 
@@ -393,25 +393,47 @@
       
 
       
-        <blockquote>
-<h2 id="What-Is-Big-Little-Endian"><a href="#What-Is-Big-Little-Endian" class="headerlink" title="What Is Big/Little-Endian"></a>What Is Big/Little-Endian</h2></blockquote>
-<h3 id="Big-Endian"><a href="#Big-Endian" class="headerlink" title="Big-Endian"></a>Big-Endian</h3><p>数据的高字节保存在内存的低地址中,而数据的低字节保存在内存的高地址中.</p>
-<h3 id="little-Endian"><a href="#little-Endian" class="headerlink" title="little-Endian"></a>little-Endian</h3><p>数据的低字节保存在内存的高地址中,而数据的高字节保存在内存的低地址中.</p>
-<h3 id="How-To-memory"><a href="#How-To-memory" class="headerlink" title="How To memory"></a>How To memory</h3><p>小端低低,小端与人的逻辑顺序一致.</p>
-<blockquote>
-<h2 id="Why-Big-Little-Endian"><a href="#Why-Big-Little-Endian" class="headerlink" title="Why Big/Little-Endian"></a>Why Big/Little-Endian</h2></blockquote>
-<p>在操作系统中,x86和一般的OS（如windows,FreeBSD,Linux）使用的是小端模式.但比如Mac OS是大端模式.</p>
-<p>在计算机系统中,我们是以字节为单位的,每个地址单元都对应着一个字节,一个字节为8bit.但是在C语言中除了8bit的char之外,还有16bit的short型,32bit的long型（要看具体的编译器）.另外,对于位数大于8位的处理器,例如16位或者32位的处理器,由于寄存器宽度大于一个字节,那么必然存在着一个如果将多个字节安排的问题.因此就导致了大端存储模式和小端存储模式.</p>
+        <h2 id="What-Is-POD"><a href="#What-Is-POD" class="headerlink" title="What Is POD"></a>What Is POD</h2><p><em>Plian Old Data</em>:通常用于说明一个类型的属性,尤其是用户自定义类型.</p>
 <ul>
-<li><p>不同端模式的处理器进行数据传递时必须要考虑端模式的不同.</p>
+<li><em>Plain</em>表示了POD是一个普通的类型,C++常见类型都有类似属性,不像存在着虚函数和虚继承的类型那么特别.</li>
+<li><em>Old</em>体现了与C的兼容性,比如可以用<em>memcpy</em>进行复制,用<em>memset</em>进行初始化等.</li>
+</ul>
+<h2 id="Why-POD"><a href="#Why-POD" class="headerlink" title="Why POD"></a>Why POD</h2><ul>
+<li>字节赋值:代码中可以安全的使用<em>memcpy</em>和<em>memset</em>对POD类型进行初始化和拷贝等操作;</li>
+<li>对C内存布局兼容:POD类型的数据在C和C++间的操作总是安全的;</li>
+<li>保证静态初始化的安全有效:静态初始化在很多时候能够提高程序性能,而POD类型对象的初始化往往更加简单.</li>
+</ul>
+<h2 id="How-To-Define-POD"><a href="#How-To-Define-POD" class="headerlink" title="How To Define POD"></a>How To Define POD</h2><p>C++11将POD划分为两个概念的合集<em>trivial</em>和<em>standad layout</em>.</p>
+<h3 id="Trivial"><a href="#Trivial" class="headerlink" title="Trivial"></a>Trivial</h3><ul>
+<li><p>拥有平凡的<em>trivial constructor</em>和平凡的<em>trivial destructor</em><br>通常情况下,不定义构造函数,编译器就会默认生成一个<em>trivial constructor</em>.而一旦定义了构造函数,即使不包含参数,函数体内也没有任何代码,该构造函数也不是<em>trivial</em>;<br>析构函数也是如此;<br>可以使用<code>= default</code>将构造函数和析构函数定义为trivial.</p>
 </li>
-<li><p>在网络上传输数据时,由于数据传输的两端对应不同的硬件平台,采用的存储字节顺序可能不一致.所以在TCP/IP协议规定了在网络上必须采用网络字节顺序,也就是大端模式.对于char型数据只占一个字节,无所谓大端和小端.而对于非char类型数据,必须在数据发送到网络上之前将其转换成大端模式.接收网络数据时按符合接受主机的环境接收.</p>
+<li><p>拥有平凡的<em>trivial copy constructor</em>和平凡的<em>trivial move constructor</em><br><em>trivial copy constructor</em>基本等同于使用<em>memcpy</em>进行构造;<br>若不声明编译器会自动生成,或者使用<code>= default</code>;<br><em>trivial move constructor</em>与<em>trivial copy constructor</em>相似,只不过使用的移动语义.</p>
+</li>
+<li><p>拥有平凡的<em>trivial assignment operator</em>和平凡的<em>trivial move operator</em><br>与上述类似.</p>
+</li>
+<li><p>不能包含虚函数以及虚基类</p>
 </li>
 </ul>
-<blockquote>
-<h2 id="How-To-Determine"><a href="#How-To-Determine" class="headerlink" title="How To Determine"></a>How To Determine</h2></blockquote>
-<h3 id="Using-char"><a href="#Using-char" class="headerlink" title="Using char*"></a>Using char*</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(*(<span class="keyword">char</span>*)&amp;num == <span class="number">1</span>)&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Little-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Big-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Using-union"><a href="#Using-union" class="headerlink" title="Using union"></a>Using union</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//union共用同一块内存地址</span></span><br><span class="line"><span class="keyword">union</span> Endian&#123;</span><br><span class="line">  <span class="keyword">int</span> long_addr;</span><br><span class="line">  <span class="keyword">char</span> short_addr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Endian ed;</span><br><span class="line">ed.long_addr = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(ed.short_addr == <span class="number">1</span>) &#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Little-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Big-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Standad-Layout"><a href="#Standad-Layout" class="headerlink" title="Standad Layout"></a>Standad Layout</h3><ul>
+<li><p>所有非静态成员拥有相同的访问权限(<em>private</em>,<em>protect</em>,<em>public</em>)</p>
+</li>
+<li><p>在类或结构体赋值时,满足一下两种情况之一:<br>派生类中有非静态成员,且只有一个仅包含静态成员的基类;<br>基类有非静态成员,派生类没有非静态成员.</p>
+</li>
+<li><p>类中的第一个非静态成员的类型与基类不同.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> :</span> B&#123;B b;&#125; <span class="comment">//is not Standad Layout</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> :</span> B&#123;</span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line">  B b;</span><br><span class="line">&#125; <span class="comment">//is Standad Layout</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>该规则是基于C++中不允许优化不包含成员的基类而产生的.</p>
+<ul>
+<li><p>没有虚函数和虚基类</p>
+</li>
+<li><p>所有非静态成员均符合标准布局类型,其基类也符合标准布局.</p>
+</li>
+</ul>
+<h2 id="How-To-Determine"><a href="#How-To-Determine" class="headerlink" title="How To Determine"></a>How To Determine</h2><h3 id="Determine-Trivial"><a href="#Determine-Trivial" class="headerlink" title="Determine Trivial"></a>Determine Trivial</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_trivial;</span><br><span class="line">is_trivi&lt;T&gt;::value;&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
+<h3 id="Determin-Standard-Layout"><a href="#Determin-Standard-Layout" class="headerlink" title="Determin Standard Layout"></a>Determin Standard Layout</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_standard_layout;</span><br><span class="line">is_standard_layout&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
+<h3 id="Determine-POD"><a href="#Determine-POD" class="headerlink" title="Determine POD"></a>Determine POD</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_pod;</span><br><span class="line">is_pod&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -441,15 +463,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/17/raii/" rel="next" title="RAII">
+                <i class="fa fa-chevron-left"></i> RAII
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/17/raii/" rel="prev" title="RAII">
-                RAII <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Is-Big-Little-Endian"><span class="nav-number">1.</span> <span class="nav-text">What Is Big/Little-Endian</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-Endian"><span class="nav-number">1.1.</span> <span class="nav-text">Big-Endian</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#little-Endian"><span class="nav-number">1.2.</span> <span class="nav-text">little-Endian</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-To-memory"><span class="nav-number">1.3.</span> <span class="nav-text">How To memory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Big-Little-Endian"><span class="nav-number">2.</span> <span class="nav-text">Why Big/Little-Endian</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-To-Determine"><span class="nav-number">3.</span> <span class="nav-text">How To Determine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-char"><span class="nav-number">3.1.</span> <span class="nav-text">Using char*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-union"><span class="nav-number">3.2.</span> <span class="nav-text">Using union</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Is-POD"><span class="nav-number">1.</span> <span class="nav-text">What Is POD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-POD"><span class="nav-number">2.</span> <span class="nav-text">Why POD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-To-Define-POD"><span class="nav-number">3.</span> <span class="nav-text">How To Define POD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trivial"><span class="nav-number">3.1.</span> <span class="nav-text">Trivial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Standad-Layout"><span class="nav-number">3.2.</span> <span class="nav-text">Standad Layout</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-To-Determine"><span class="nav-number">4.</span> <span class="nav-text">How To Determine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-Trivial"><span class="nav-number">4.1.</span> <span class="nav-text">Determine Trivial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determin-Standard-Layout"><span class="nav-number">4.2.</span> <span class="nav-text">Determin Standard Layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-POD"><span class="nav-number">4.3.</span> <span class="nav-text">Determine POD</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -269,6 +269,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/18/pod/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/18/pod/" itemprop="url">POD</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-18T08:19:12+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tips/" itemprop="url" rel="index">
+                    <span itemprop="name">tips</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="What-Is-POD"><a href="#What-Is-POD" class="headerlink" title="What Is POD"></a>What Is POD</h2><p><em>Plian Old Data</em>:通常用于说明一个类型的属性,尤其是用户自定义类型.</p>
+<ul>
+<li><em>Plain</em>表示了POD是一个普通的类型,C++常见类型都有类似属性,不像存在着虚函数和虚继承的类型那么特别.</li>
+<li><em>Old</em>体现了与C的兼容性,比如可以用<em>memcpy</em>进行复制,用<em>memset</em>进行初始化等.</li>
+</ul>
+<h2 id="Why-POD"><a href="#Why-POD" class="headerlink" title="Why POD"></a>Why POD</h2><ul>
+<li>字节赋值:代码中可以安全的使用<em>memcpy</em>和<em>memset</em>对POD类型进行初始化和拷贝等操作;</li>
+<li>对C内存布局兼容:POD类型的数据在C和C++间的操作总是安全的;</li>
+<li>保证静态初始化的安全有效:静态初始化在很多时候能够提高程序性能,而POD类型对象的初始化往往更加简单.</li>
+</ul>
+<h2 id="How-To-Define-POD"><a href="#How-To-Define-POD" class="headerlink" title="How To Define POD"></a>How To Define POD</h2><p>C++11将POD划分为两个概念的合集<em>trivial</em>和<em>standad layout</em>.</p>
+<h3 id="Trivial"><a href="#Trivial" class="headerlink" title="Trivial"></a>Trivial</h3><ul>
+<li><p>拥有平凡的<em>trivial constructor</em>和平凡的<em>trivial destructor</em><br>通常情况下,不定义构造函数,编译器就会默认生成一个<em>trivial constructor</em>.而一旦定义了构造函数,即使不包含参数,函数体内也没有任何代码,该构造函数也不是<em>trivial</em>;<br>析构函数也是如此;<br>可以使用<code>= default</code>将构造函数和析构函数定义为trivial.</p>
+</li>
+<li><p>拥有平凡的<em>trivial copy constructor</em>和平凡的<em>trivial move constructor</em><br><em>trivial copy constructor</em>基本等同于使用<em>memcpy</em>进行构造;<br>若不声明编译器会自动生成,或者使用<code>= default</code>;<br><em>trivial move constructor</em>与<em>trivial copy constructor</em>相似,只不过使用的移动语义.</p>
+</li>
+<li><p>拥有平凡的<em>trivial assignment operator</em>和平凡的<em>trivial move operator</em><br>与上述类似.</p>
+</li>
+<li><p>不能包含虚函数以及虚基类</p>
+</li>
+</ul>
+<h3 id="Standad-Layout"><a href="#Standad-Layout" class="headerlink" title="Standad Layout"></a>Standad Layout</h3><ul>
+<li><p>所有非静态成员拥有相同的访问权限(<em>private</em>,<em>protect</em>,<em>public</em>)</p>
+</li>
+<li><p>在类或结构体赋值时,满足一下两种情况之一:<br>派生类中有非静态成员,且只有一个仅包含静态成员的基类;<br>基类有非静态成员,派生类没有非静态成员.</p>
+</li>
+<li><p>类中的第一个非静态成员的类型与基类不同.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> :</span> B&#123;B b;&#125; <span class="comment">//is not Standad Layout</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> :</span> B&#123;</span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line">  B b;</span><br><span class="line">&#125; <span class="comment">//is Standad Layout</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>该规则是基于C++中不允许优化不包含成员的基类而产生的.</p>
+<ul>
+<li><p>没有虚函数和虚基类</p>
+</li>
+<li><p>所有非静态成员均符合标准布局类型,其基类也符合标准布局.</p>
+</li>
+</ul>
+<h2 id="How-To-Determine"><a href="#How-To-Determine" class="headerlink" title="How To Determine"></a>How To Determine</h2><h3 id="Determine-Trivial"><a href="#Determine-Trivial" class="headerlink" title="Determine Trivial"></a>Determine Trivial</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_trivial;</span><br><span class="line">is_trivi&lt;T&gt;::value;&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
+<h3 id="Determin-Standard-Layout"><a href="#Determin-Standard-Layout" class="headerlink" title="Determin Standard Layout"></a>Determin Standard Layout</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_standard_layout;</span><br><span class="line">is_standard_layout&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
+<h3 id="Determine-POD"><a href="#Determine-POD" class="headerlink" title="Determine POD"></a>Determine POD</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_pod;</span><br><span class="line">is_pod&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/17/raii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -583,10 +795,10 @@
         
           
             <blockquote>
-<h2 id="What-is-Big-Little-Endian"><a href="#What-is-Big-Little-Endian" class="headerlink" title="What is Big/Little-Endian"></a>What is Big/Little-Endian</h2></blockquote>
+<h2 id="What-Is-Big-Little-Endian"><a href="#What-Is-Big-Little-Endian" class="headerlink" title="What Is Big/Little-Endian"></a>What Is Big/Little-Endian</h2></blockquote>
 <h3 id="Big-Endian"><a href="#Big-Endian" class="headerlink" title="Big-Endian"></a>Big-Endian</h3><p>数据的高字节保存在内存的低地址中,而数据的低字节保存在内存的高地址中.</p>
 <h3 id="little-Endian"><a href="#little-Endian" class="headerlink" title="little-Endian"></a>little-Endian</h3><p>数据的低字节保存在内存的高地址中,而数据的高字节保存在内存的低地址中.</p>
-<h3 id="How-to-memory"><a href="#How-to-memory" class="headerlink" title="How to memory"></a>How to memory</h3><p>小端低低,小端与人的逻辑顺序一致.</p>
+<h3 id="How-To-memory"><a href="#How-To-memory" class="headerlink" title="How To memory"></a>How To memory</h3><p>小端低低,小端与人的逻辑顺序一致.</p>
 <blockquote>
 <h2 id="Why-Big-Little-Endian"><a href="#Why-Big-Little-Endian" class="headerlink" title="Why Big/Little-Endian"></a>Why Big/Little-Endian</h2></blockquote>
 <p>在操作系统中,x86和一般的OS（如windows,FreeBSD,Linux）使用的是小端模式.但比如Mac OS是大端模式.</p>
@@ -598,9 +810,9 @@
 </li>
 </ul>
 <blockquote>
-<h2 id="How-to-determine"><a href="#How-to-determine" class="headerlink" title="How to determine"></a>How to determine</h2></blockquote>
+<h2 id="How-To-Determine"><a href="#How-To-Determine" class="headerlink" title="How To Determine"></a>How To Determine</h2></blockquote>
 <h3 id="Using-char"><a href="#Using-char" class="headerlink" title="Using char*"></a>Using char*</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(*(<span class="keyword">char</span>*)&amp;num == <span class="number">1</span>)&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Little-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Big-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Using-union"><a href="#Using-union" class="headerlink" title="Using union"></a>Using union</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//union共用同一块内存地址</span></span><br><span class="line"><span class="keyword">union</span> Endian&#123;</span><br><span class="line">  <span class="keyword">int</span> long_addr;</span><br><span class="line">  <span class="keyword">char</span> short_addr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Endian ed;</span><br><span class="line">ed.long_addr = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(ed.short_addr == <span class="number">1</span>) &#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Little-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Big-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Using-union"><a href="#Using-union" class="headerlink" title="Using union"></a>Using union</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//union共用同一块内存地址</span></span><br><span class="line"><span class="keyword">union</span> Endian&#123;</span><br><span class="line">  <span class="keyword">int</span> long_addr;</span><br><span class="line">  <span class="keyword">char</span> short_addr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Endian ed;</span><br><span class="line">ed.long_addr = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(ed.short_addr == <span class="number">1</span>) &#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Little-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Big-Endian!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -681,7 +893,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
