@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="What is RAII Resource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏.  How to implement RAII 构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存">
+<meta name="description" content="What Is RAIIResource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏. How To Implement RAII构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存泄漏.">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RAII">
 <meta property="og:url" content="https://Tsing-Yi.github.io/2019/03/17/raii/index.html">
 <meta property="og:site_name" content="Tsing-Yi">
-<meta property="og:description" content="What is RAII Resource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏.  How to implement RAII 构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存">
+<meta property="og:description" content="What Is RAIIResource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏. How To Implement RAII构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存泄漏.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-17T12:04:38.752Z">
+<meta property="og:updated_time" content="2019-03-18T01:07:00.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAII">
-<meta name="twitter:description" content="What is RAII Resource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏.  How to implement RAII 构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存">
+<meta name="twitter:description" content="What Is RAIIResource Acquistion Is Initialzation:资源获取即初始化,C++语言中的一个惯用法,用于管理资源,避免内存泄漏. How To Implement RAII构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.  不需要显式地释放资源; 对象所需的资源在生命周期内始终有效; 避免内存泄漏.">
 
 
 
@@ -393,23 +393,15 @@
       
 
       
-        <blockquote>
-<h2 id="What-is-RAII"><a href="#What-is-RAII" class="headerlink" title="What is RAII"></a>What is RAII</h2></blockquote>
-<p><em>Resource Acquistion Is Initialzation</em>:资源获取即初始化,<em>C++</em>语言中的一个惯用法,用于管理资源,避免内存泄漏.</p>
-<blockquote>
-<h2 id="How-to-implement-RAII"><a href="#How-to-implement-RAII" class="headerlink" title="How to implement RAII"></a>How to implement RAII</h2></blockquote>
-<p>构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.</p>
+        <h2 id="What-Is-RAII"><a href="#What-Is-RAII" class="headerlink" title="What Is RAII"></a>What Is RAII</h2><p><em>Resource Acquistion Is Initialzation</em>:资源获取即初始化,<em>C++</em>语言中的一个惯用法,用于管理资源,避免内存泄漏.</p>
+<h2 id="How-To-Implement-RAII"><a href="#How-To-Implement-RAII" class="headerlink" title="How To Implement RAII"></a>How To Implement RAII</h2><p>构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.</p>
 <ul>
 <li>不需要显式地释放资源;</li>
 <li>对象所需的资源在生命周期内始终有效;</li>
 <li>避免内存泄漏.</li>
 </ul>
-<blockquote>
-<h2 id="What-Is-Resource"><a href="#What-Is-Resource" class="headerlink" title="What Is Resource"></a>What Is Resource</h2></blockquote>
-<p>如内存,文件句柄,网络套接字(<em>network sockets</em>),互斥锁(<em>mutex lock</em>)等等.</p>
-<blockquote>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2></blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileRAII</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  FileRAII(File* file):file_(file)&#123;&#125;</span><br><span class="line">  ~FileRAII()&#123;fclose(file_);&#125;</span><br><span class="line">  <span class="function">File* <span class="title">Get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> file_;&#125;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  File* file_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="What-Is-Resource"><a href="#What-Is-Resource" class="headerlink" title="What Is Resource"></a>What Is Resource</h2><p>如内存,文件句柄,网络套接字(<em>network sockets</em>),互斥锁(<em>mutex lock</em>)等等.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileRAII</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  FileRAII(File* file):file_(file)&#123;&#125;</span><br><span class="line">  ~FileRAII()&#123;fclose(file_);&#125;</span><br><span class="line">  <span class="function">File* <span class="title">Get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> file_;&#125;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  File* file_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -584,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-RAII"><span class="nav-number">1.</span> <span class="nav-text">What is RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-implement-RAII"><span class="nav-number">2.</span> <span class="nav-text">How to implement RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Is-Resource"><span class="nav-number">3.</span> <span class="nav-text">What Is Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">4.</span> <span class="nav-text">Example</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Is-RAII"><span class="nav-number">1.</span> <span class="nav-text">What Is RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-To-Implement-RAII"><span class="nav-number">2.</span> <span class="nav-text">How To Implement RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Is-Resource"><span class="nav-number">3.</span> <span class="nav-text">What Is Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">4.</span> <span class="nav-text">Example</span></a></li></ol></div>
             
 
           </div>
