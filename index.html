@@ -269,6 +269,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/19/mutex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/19/mutex/" itemprop="url">Mutex</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T11:38:05+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/thread/" itemprop="url" rel="index">
+                    <span itemprop="name">thread</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mutex"><a href="#mutex" class="headerlink" title="mutex"></a>mutex</h2><p>用于同步机制,不可复制,不可移动</p>
+<h3 id="lock-amp-unlock"><a href="#lock-amp-unlock" class="headerlink" title="lock &amp; unlock"></a>lock &amp; unlock</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mutex m;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">()</span></span>&#123;</span><br><span class="line">  m.lock();</span><br><span class="line">  <span class="comment">//do_something</span></span><br><span class="line">  m.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果do_something过程中有异常,则不能正常解锁,可能会造成死锁现象,改进方法是在每个抛出异常时调用<em>unlock</em>.</p>
+<h3 id="try-lock"><a href="#try-lock" class="headerlink" title="try_lock"></a>try_lock</h3><p>尝试获取锁,立即返回,成功为true,失败false.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mutex m;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(m.try_lock())&#123;</span><br><span class="line">  	<span class="comment">//do_something with share data</span></span><br><span class="line">  	m.unlock();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">  	<span class="comment">//do_something_else</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="time-mutex"><a href="#time-mutex" class="headerlink" title="time_mutex"></a>time_mutex</h2><h3 id="lock-amp-un-lock-amp-try-lock"><a href="#lock-amp-un-lock-amp-try-lock" class="headerlink" title="lock &amp; un_lock &amp; try_lock"></a>lock &amp; un_lock &amp; try_lock</h3><p>方法同<em>mutex</em>.</p>
+<h3 id="try-lock-for-amp-try-lock-until"><a href="#try-lock-for-amp-try-lock-until" class="headerlink" title="try_lock_for &amp; try_lock_until"></a>try_lock_for &amp; try_lock_until</h3><ul>
+<li><p>尝试加锁,阻塞直到指定的<em>timeout_duration</em>或获得锁,成功返回true,失败false.<br>若<em>timeout_duration</em>小于等于<em>timeout_duration.zero()</em>,等同于<em>try_lock()</em>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">time_mutex tm;</span><br><span class="line"><span class="keyword">using</span> MS = chrono::milliseconds;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(tm.try_lock_for(MS(<span class="number">100</span>)))&#123;</span><br><span class="line">  	<span class="comment">//do_something_with_share_data</span></span><br><span class="line">  	tm.unlock();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">  	<span class="comment">//do_something_else</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>尝试加锁,阻塞直到指定的<em>timeout_time</em>或获得锁,成功返回true,失败false.<br>当前时间若已经过<em>timeout_time</em>,等同于<em>try_lock()</em>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">time_mutex tm;</span><br><span class="line"><span class="keyword">using</span> MS = chrono::seconds;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">auto</span> NOW = chrono::steady_clock::now();</span><br><span class="line">  <span class="keyword">if</span>(tm.try_lock_until(NOW + MS(<span class="number">100</span>)))&#123;</span><br><span class="line">  	<span class="comment">//do_something_with_share_data</span></span><br><span class="line">  	tm.unlock();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">  	<span class="comment">//do_something_else</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="recursive-mutex-amp-recursive-time-mutex"><a href="#recursive-mutex-amp-recursive-time-mutex" class="headerlink" title="recursive_mutex &amp; recursive_time_mutex"></a>recursive_mutex &amp; recursive_time_mutex</h2><p>递归锁,暂时略过…</p>
+<h2 id="share-mutex-amp-share-time-mutex"><a href="#share-mutex-amp-share-time-mutex" class="headerlink" title="share_mutex &amp; share_time_mutex"></a>share_mutex &amp; share_time_mutex</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/19/thread-join-detach/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1077,7 +1264,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
