@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Tsing-Yi">
 <meta property="og:description" content="lock_guard为mutex提供RAII封装机制,构造时尝试对互斥量加锁,在析构时解锁. 可以用{}限制lock_guard作用域.123456mutex m;&amp;#123;  lock_guard&amp;lt;mutex&amp;gt; lock(m);  //do_something&amp;#125;//在离开大括号作用域后自动析构解锁. 使用lock_guard后,再调用lock会出错.123mutex m;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T01:10:53.868Z">
+<meta property="og:updated_time" content="2019-03-22T12:11:28.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lock">
 <meta name="twitter:description" content="lock_guard为mutex提供RAII封装机制,构造时尝试对互斥量加锁,在析构时解锁. 可以用{}限制lock_guard作用域.123456mutex m;&amp;#123;  lock_guard&amp;lt;mutex&amp;gt; lock(m);  //do_something&amp;#125;//在离开大括号作用域后自动析构解锁. 使用lock_guard后,再调用lock会出错.123mutex m;">
@@ -394,7 +394,7 @@
 
       
         <h2 id="lock-guard"><a href="#lock-guard" class="headerlink" title="lock_guard"></a>lock_guard</h2><p>为<em>mutex</em>提供RAII封装机制,构造时尝试对互斥量加锁,在析构时解锁.</p>
-<h3 id="可以用-限制lock-guard作用域"><a href="#可以用-限制lock-guard作用域" class="headerlink" title="可以用{}限制lock_guard作用域."></a>可以用<code>{}</code>限制<em>lock_guard</em>作用域.</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mutex m;</span><br><span class="line">&#123;</span><br><span class="line">  lock_guard&lt;mutex&gt; lock(m);</span><br><span class="line">  <span class="comment">//do_something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在离开大括号作用域后自动析构解锁.</span></span><br></pre></td></tr></table></figure>
+<h3 id="可以用-限制lock-guard作用域"><a href="#可以用-限制lock-guard作用域" class="headerlink" title="可以用{}限制lock_guard作用域."></a>可以用{}限制lock_guard作用域.</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mutex m;</span><br><span class="line">&#123;</span><br><span class="line">  lock_guard&lt;mutex&gt; lock(m);</span><br><span class="line">  <span class="comment">//do_something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在离开大括号作用域后自动析构解锁.</span></span><br></pre></td></tr></table></figure>
 <h3 id="使用lock-guard后-再调用lock会出错"><a href="#使用lock-guard后-再调用lock会出错" class="headerlink" title="使用lock_guard后,再调用lock会出错."></a>使用lock_guard后,再调用lock会出错.</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mutex m;</span><br><span class="line">lock_guard&lt;mutex&gt; lock(m);</span><br><span class="line">m.lock();<span class="comment">//对同一互斥量进行了两次加锁</span></span><br></pre></td></tr></table></figure>
 <h3 id="额外参数adopt-lock"><a href="#额外参数adopt-lock" class="headerlink" title="额外参数adopt_lock"></a>额外参数adopt_lock</h3><p>假设已加锁,在使用<em>lock_guard</em>时,已经获得了互斥量的所有权,不会再加锁.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mutex m;</span><br><span class="line">lock(m);</span><br><span class="line">lock_guard&lt;mutex&gt; lock(m, adopt_lock);</span><br></pre></td></tr></table></figure></p>
 <p><em>lock_guard</em>安全性比<em>lock</em>高,性能比<em>unique_lock</em>高,但不如<em>unique_lock</em>灵活.</p>
@@ -446,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/28/attribute/" rel="prev" title="attribute">
+                attribute <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -522,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,7 +537,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -544,7 +548,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
