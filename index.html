@@ -269,6 +269,525 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/04/02/quick-sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/quick-sort/" itemprop="url">quick-sort</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T15:40:34+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h2><p>快速排序是不稳定排序算法,时间复杂度O(nlogn),空间复杂度O(1),效率与输入无关.<br>合理地选择分割元素对性能有很大提升,这里采用三点取中值.<br>另外在递归到小子列时可以使用插入排序提升性能,地贵司深度过深时可采用归并排序.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  QuickSort(arr, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> pivot = ThreeMedin(arr, left, right);</span><br><span class="line">  <span class="keyword">int</span> i = left, j = right - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  	<span class="keyword">while</span>(arr[++ i] &lt; pivot);</span><br><span class="line">  	<span class="keyword">while</span>(arr[-- j] &gt; pivot);</span><br><span class="line">  	<span class="keyword">if</span>(i &lt; j) swap(arr[i], arr[j]);</span><br><span class="line">  	<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  swap(arr[i], arr[right - <span class="number">1</span>]);</span><br><span class="line">  Quick(arr, left, i - <span class="number">1</span>);</span><br><span class="line">  Quick(arr, i +<span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ThreeMedin</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">if</span>(arr[mid] &lt; arr[left]) swap(arr[mid], arr[left]);</span><br><span class="line">  <span class="keyword">if</span>(arr[right] &lt; arr[left]) swap(arr[right], arr[left]);</span><br><span class="line">  <span class="keyword">if</span>(arr[right] &lt; arr[mid]) swap(arr[right], arr[mid]);</span><br><span class="line">  swap(arr[mid], arr[right - <span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">return</span> arr[right - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/04/02/heap-sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/heap-sort/" itemprop="url">heap-sort</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T15:14:06+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap Sort"></a>Heap Sort</h2><p>堆排序是不稳定排序算法,时间复杂度O(nlogn),空间复杂度O(1).</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> pos = n / <span class="number">2</span> - <span class="number">1</span>; pos &gt;= <span class="number">0</span>; -- pos)&#123;</span><br><span class="line">  	AjustHeap(arr, pos, n);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">  	swap(arr[<span class="number">0</span>], arr[n - <span class="number">1</span>]);</span><br><span class="line">  	AjustHeap(arr, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">  	-- n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AjustHeap</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> node, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> left = node * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> right = node * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">int</span> max_pos = node;</span><br><span class="line">  <span class="keyword">if</span> (left &lt; n &amp;&amp; arr[left] &gt; arr[max_pos]) max_pos = left;</span><br><span class="line">  <span class="keyword">if</span> (right &lt; n &amp;&amp; arr[right] &gt; arr[max_pos]) max_pos = right;</span><br><span class="line">  <span class="keyword">if</span> (max_pos != node)&#123;</span><br><span class="line">	swap(arr[max_pos], arr[node]);</span><br><span class="line">	AjustHeap(arr, max_pos, n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/04/02/shell-sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tsing-Yi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tsing-Yi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/shell-sort/" itemprop="url">shell-sort</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:47:00+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Shell-Sort"><a href="#Shell-Sort" class="headerlink" title="Shell Sort"></a>Shell Sort</h2><p>希尔排序是不稳定排序算法,时间复杂度：平均O(NlogN)，最坏情况O（N^1.5）,空间复杂度：O(1),运行时间和输入有关,逆序最慢，有序最快。<br>已知的最好步长序列是由Sedgewick提出的(1, 5, 19, 41, 109,…).<br>在本代码中选择步长tep = tep/2.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> tep = n / <span class="number">2</span>; tep &gt; <span class="number">0</span>; tep /= <span class="number">2</span>)&#123;</span><br><span class="line">  	<span class="keyword">for</span>(<span class="keyword">int</span> i = tep; i &lt; n; ++ i)&#123;</span><br><span class="line">  	  <span class="keyword">int</span> j = i, min_elem = arr[j];</span><br><span class="line">  	  <span class="keyword">for</span>(; j &gt;= tep &amp;&amp; min_elem &lt; arr[j - tep]; j -= tep)&#123;</span><br><span class="line">  	  	arr[j] = move(arr[j - tep]);</span><br><span class="line">  	  &#125;</span><br><span class="line">  	  arr[j] = move(min_elem);</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/04/02/merge-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -566,7 +1085,7 @@
       
         
           
-            <h2 id="Insert-Sort"><a href="#Insert-Sort" class="headerlink" title="Insert Sort"></a>Insert Sort</h2><p>插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.<br>这里使用move,假如数组元素是复杂的类型,使用move效率会高.</p>
+            <h2 id="Insert-Sort"><a href="#Insert-Sort" class="headerlink" title="Insert Sort"></a>Insert Sort</h2><p>插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.<br>这里使用move,假如数组元素是复杂的类型,使用move效率会高.<br>可以使用折半插入提升效率.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++ i)&#123;</span><br><span class="line">  	<span class="keyword">int</span> j = i + <span class="number">1</span>, min_elem = arr[j];</span><br><span class="line">  	<span class="keyword">for</span>(; j &gt; <span class="number">0</span> &amp;&amp; min_elem &lt; arr[j - <span class="number">1</span>]; -- j)&#123;</span><br><span class="line">  		arr[j] = move(arr[j - <span class="number">1</span>]);</span><br><span class="line">  	&#125;</span><br><span class="line">  	arr[j] = move(min_elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
@@ -1499,591 +2018,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/19/thread-join-detach/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tsing-Yi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tsing-Yi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/19/thread-join-detach/" itemprop="url">Thread_Join_Detach</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T08:12:15+08:00">
-                2019-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thread/" itemprop="url" rel="index">
-                    <span itemprop="name">thread</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><h3 id="使用函数构造线程"><a href="#使用函数构造线程" class="headerlink" title="使用函数构造线程"></a>使用函数构造线程</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ThreadFun</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="comment">//do_something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(ThreadFun)</span></span>;</span><br><span class="line">  t.join();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="使用函数对象"><a href="#使用函数对象" class="headerlink" title="使用函数对象"></a>使用函数对象</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTask</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">()</span> <span class="keyword">const</span></span>&#123;</span><br><span class="line">    <span class="comment">//do_something</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  ThreadTask task;</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(task)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意上述代码中不能用thread t(ThreadTask()),这里相当于声明了一个名为t的函数,带有一个参数(函数指针指向没有参数并返回ThreadTask对象的函数),返回thread对象的函数,而非启动线程.<br>可以改用<code>thread t((ThreadTask()))</code>或<code>thread t{ThreadTask()}</code>.</p>
-<h3 id="使用Lambda表达式"><a href="#使用Lambda表达式" class="headerlink" title="使用Lambda表达式"></a>使用Lambda表达式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">thread <span class="title">t</span><span class="params">([]()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"thread start!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;)</span></span>;</span><br><span class="line">t.join();</span><br></pre></td></tr></table></figure>
-<h3 id="使用成员函数"><a href="#使用成员函数" class="headerlink" title="使用成员函数"></a>使用成员函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTask</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">()</span> <span class="keyword">const</span></span>&#123;<span class="comment">//do_something&#125;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  ThreadTask task;</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(&amp;ThreadTask::Func, &amp;task)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="向线程传递参数"><a href="#向线程传递参数" class="headerlink" title="向线程传递参数"></a>向线程传递参数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">(<span class="keyword">int</span>&amp; x)</span></span>&#123;++ x;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(Fun, x)</span></span>;</span><br><span class="line">  t.join();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里我们的线程函数使用引用传参,意图改变X值,但是实际运行中X值并未改变.这是因为thread在传递参数时使用的是变量的一次拷贝.<br>如果想用引用方式传递,可以使用<code>thread t(Func, ref(x))</code>;</p>
-<h2 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h2><h3 id="阻塞的意义"><a href="#阻塞的意义" class="headerlink" title="阻塞的意义?"></a>阻塞的意义?</h3><p>在<em>main</em>函数里调用<em>join</em>后,<em>main</em>函数将会被阻碍,什么也不做.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ThreadFunc</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"this is thread!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(ThreadFunc)</span></span>;</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"before join!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  t.join();</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"after join!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>代码执行后,<em>before join</em>和<em>this is thread</em>会同步输出,而<em>after join</em>只会在线程函数退出后输出.</p>
-<h3 id="异常在join之前发生"><a href="#异常在join之前发生" class="headerlink" title="异常在join之前发生?"></a>异常在join之前发生?</h3><ul>
-<li>类似这种情况可以在每次异常发生时调用<em>join</em>,但是代码比较丑陋.</li>
-<li>使用C++的RAII机制,在类析构函数中调用<em>join</em>.<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadGuard</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  explicit ThreadGuard(thread&amp; t):t_(t)&#123;&#125;</span><br><span class="line">  ThreadGuard(<span class="keyword">const</span> ThreadGuard&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">  ThreadGuard&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> ThreadGuard&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">  ~ThreadGuard()&#123;</span><br><span class="line">  	<span class="keyword">if</span>(t_.joinable())&#123;t_.join();&#125;</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">   thread&amp; t_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>代码保证了即时程序发生异常退出,也会调用<em>ThreadGuard</em>的析构函数执行<em>join</em>.</p>
-<h2 id="Detach"><a href="#Detach" class="headerlink" title="Detach"></a>Detach</h2><p>用于分离线程,分离后的线程在后台运行,由C++运行库统一调度管理.</p>
-<h3 id="线程执行完前-引用的临时变量销毁"><a href="#线程执行完前-引用的临时变量销毁" class="headerlink" title="线程执行完前,引用的临时变量销毁?"></a>线程执行完前,引用的临时变量销毁?</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">(<span class="keyword">int</span>&amp; x)</span></span>&#123;</span><br><span class="line">  this_thread::sleep_for(chrono::seconds(<span class="number">1</span>));</span><br><span class="line">  ++ x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(Func, ref(x))</span></span>;</span><br><span class="line">  t.detach();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里由于使用了参数的引用,在<em>main</em>函数退出后,临时变量X销毁,分离出去的线程函数会出问题.</p>
-<h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换?"></a>隐式转换?</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">(<span class="built_in">string</span>&amp; str)</span></span>&#123;</span><br><span class="line">  <span class="comment">//do_something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line">  <span class="built_in">sprintf</span>(buffer, <span class="string">"%s"</span>, <span class="string">"this is a test!"</span>);</span><br><span class="line">  <span class="function">thread <span class="title">t</span><span class="params">(Func, buffer)</span></span>;</span><br><span class="line">  t.detach();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数很有可能在<em>buffer</em>隐式转换为string之前崩溃,从而导致一些未定义的行为,解决办法是在传递到thread构造函数之前就将其转换为string对象.<br><code>thread t(Func, static&lt;string&gt;(buffer))</code>.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/18/pod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tsing-Yi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tsing-Yi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/18/pod/" itemprop="url">POD</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T08:19:12+08:00">
-                2019-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tips/" itemprop="url" rel="index">
-                    <span itemprop="name">tips</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="What-Is-POD"><a href="#What-Is-POD" class="headerlink" title="What Is POD"></a>What Is POD</h2><p><em>Plian Old Data</em>:通常用于说明一个类型的属性,尤其是用户自定义类型.</p>
-<ul>
-<li><em>Plain</em>表示了POD是一个普通的类型,C++常见类型都有类似属性,不像存在着虚函数和虚继承的类型那么特别.</li>
-<li><em>Old</em>体现了与C的兼容性,比如可以用<em>memcpy</em>进行复制,用<em>memset</em>进行初始化等.</li>
-</ul>
-<h2 id="Why-POD"><a href="#Why-POD" class="headerlink" title="Why POD"></a>Why POD</h2><ul>
-<li>字节赋值:代码中可以安全的使用<em>memcpy</em>和<em>memset</em>对POD类型进行初始化和拷贝等操作;</li>
-<li>对C内存布局兼容:POD类型的数据在C和C++间的操作总是安全的;</li>
-<li>保证静态初始化的安全有效:静态初始化在很多时候能够提高程序性能,而POD类型对象的初始化往往更加简单.</li>
-</ul>
-<h2 id="How-To-Define-POD"><a href="#How-To-Define-POD" class="headerlink" title="How To Define POD"></a>How To Define POD</h2><p>C++11将POD划分为两个概念的合集<em>trivial</em>和<em>standad layout</em>.</p>
-<h3 id="Trivial"><a href="#Trivial" class="headerlink" title="Trivial"></a>Trivial</h3><ul>
-<li><p>拥有平凡的<em>trivial constructor</em>和平凡的<em>trivial destructor</em><br>通常情况下,不定义构造函数,编译器就会默认生成一个<em>trivial constructor</em>.而一旦定义了构造函数,即使不包含参数,函数体内也没有任何代码,该构造函数也不是<em>trivial</em>;<br>析构函数也是如此;<br>可以使用<code>= default</code>将构造函数和析构函数定义为trivial.</p>
-</li>
-<li><p>拥有平凡的<em>trivial copy constructor</em>和平凡的<em>trivial move constructor</em><br><em>trivial copy constructor</em>基本等同于使用<em>memcpy</em>进行构造;<br>若不声明编译器会自动生成,或者使用<code>= default</code>;<br><em>trivial move constructor</em>与<em>trivial copy constructor</em>相似,只不过使用的移动语义.</p>
-</li>
-<li><p>拥有平凡的<em>trivial assignment operator</em>和平凡的<em>trivial move operator</em><br>与上述类似.</p>
-</li>
-<li><p>不能包含虚函数以及虚基类</p>
-</li>
-</ul>
-<h3 id="Standad-Layout"><a href="#Standad-Layout" class="headerlink" title="Standad Layout"></a>Standad Layout</h3><ul>
-<li><p>所有非静态成员拥有相同的访问权限(<em>private</em>,<em>protect</em>,<em>public</em>)</p>
-</li>
-<li><p>在类或结构体赋值时,满足一下两种情况之一:<br>派生类中有非静态成员,且只有一个仅包含静态成员的基类;<br>基类有非静态成员,派生类没有非静态成员.</p>
-</li>
-<li><p>类中的第一个非静态成员的类型与基类不同.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> :</span> B&#123;B b;&#125; <span class="comment">//is not Standad Layout</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> :</span> B&#123;</span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line">  B b;</span><br><span class="line">&#125; <span class="comment">//is Standad Layout</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>该规则是基于C++中不允许优化不包含成员的基类而产生的.</p>
-<ul>
-<li><p>没有虚函数和虚基类</p>
-</li>
-<li><p>所有非静态成员均符合标准布局类型,其基类也符合标准布局.</p>
-</li>
-</ul>
-<h2 id="How-To-Determine"><a href="#How-To-Determine" class="headerlink" title="How To Determine"></a>How To Determine</h2><h3 id="Determine-Trivial"><a href="#Determine-Trivial" class="headerlink" title="Determine Trivial"></a>Determine Trivial</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_trivial;</span><br><span class="line">is_trivi&lt;T&gt;::value;&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
-<h3 id="Determin-Standard-Layout"><a href="#Determin-Standard-Layout" class="headerlink" title="Determin Standard Layout"></a>Determin Standard Layout</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_standard_layout;</span><br><span class="line">is_standard_layout&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
-<h3 id="Determine-POD"><a href="#Determine-POD" class="headerlink" title="Determine POD"></a>Determine POD</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">struct</span> <span class="title">std</span>:</span>:is_pod;</span><br><span class="line">is_pod&lt;T&gt;::value;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://Tsing-Yi.github.io/2019/03/17/raii/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tsing-Yi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tsing-Yi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/raii/" itemprop="url">RAII</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T19:36:27+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tips/" itemprop="url" rel="index">
-                    <span itemprop="name">tips</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="What-Is-RAII"><a href="#What-Is-RAII" class="headerlink" title="What Is RAII"></a>What Is RAII</h2><p><em>Resource Acquistion Is Initialzation</em>:资源获取即初始化,<em>C++</em>语言中的一个惯用法,用于管理资源,避免内存泄漏.</p>
-<h2 id="How-To-Implement-RAII"><a href="#How-To-Implement-RAII" class="headerlink" title="How To Implement RAII"></a>How To Implement RAII</h2><p>构造一个类,在构造函数中申请资源,控制对资源的访问使之在对象的生命周期内始终有效,在析构函数中释放资源.</p>
-<ul>
-<li>不需要显式地释放资源;</li>
-<li>对象所需的资源在生命周期内始终有效;</li>
-<li>避免内存泄漏.</li>
-</ul>
-<h2 id="What-Is-Resource"><a href="#What-Is-Resource" class="headerlink" title="What Is Resource"></a>What Is Resource</h2><p>如内存,文件句柄,网络套接字(<em>network sockets</em>),互斥锁(<em>mutex lock</em>)等等.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileRAII</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  FileRAII(File* file):file_(file)&#123;&#125;</span><br><span class="line">  ~FileRAII()&#123;fclose(file_);&#125;</span><br><span class="line">  <span class="function">File* <span class="title">Get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> file_;&#125;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  File* file_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2134,7 +2068,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

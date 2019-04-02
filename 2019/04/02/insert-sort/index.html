@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Insert Sort插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.这里使用move,假如数组元素是复杂的类型,使用move效率会高. 123456789void InsertSort(int* arr, int n)&amp;#123;  for(int i = 0; i &amp;lt; n - 1; ++ i)&amp;#123;  	int j = i + 1">
+<meta name="description" content="Insert Sort插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.这里使用move,假如数组元素是复杂的类型,使用move效率会高.可以使用折半插入提升效率. 123456789void InsertSort(int* arr, int n)&amp;#123;  for(int i = 0; i &amp;lt; n - 1; ++ i)&amp;#123;">
 <meta name="keywords" content="sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="insert-sort">
 <meta property="og:url" content="https://Tsing-Yi.github.io/2019/04/02/insert-sort/index.html">
 <meta property="og:site_name" content="Tsing-Yi">
-<meta property="og:description" content="Insert Sort插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.这里使用move,假如数组元素是复杂的类型,使用move效率会高. 123456789void InsertSort(int* arr, int n)&amp;#123;  for(int i = 0; i &amp;lt; n - 1; ++ i)&amp;#123;  	int j = i + 1">
+<meta property="og:description" content="Insert Sort插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.这里使用move,假如数组元素是复杂的类型,使用move效率会高.可以使用折半插入提升效率. 123456789void InsertSort(int* arr, int n)&amp;#123;  for(int i = 0; i &amp;lt; n - 1; ++ i)&amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T03:02:19.124Z">
+<meta property="og:updated_time" content="2019-04-02T07:11:09.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="insert-sort">
-<meta name="twitter:description" content="Insert Sort插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.这里使用move,假如数组元素是复杂的类型,使用move效率会高. 123456789void InsertSort(int* arr, int n)&amp;#123;  for(int i = 0; i &amp;lt; n - 1; ++ i)&amp;#123;  	int j = i + 1">
+<meta name="twitter:description" content="Insert Sort插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.这里使用move,假如数组元素是复杂的类型,使用move效率会高.可以使用折半插入提升效率. 123456789void InsertSort(int* arr, int n)&amp;#123;  for(int i = 0; i &amp;lt; n - 1; ++ i)&amp;#123;">
 
 
 
@@ -393,7 +393,7 @@
       
 
       
-        <h2 id="Insert-Sort"><a href="#Insert-Sort" class="headerlink" title="Insert Sort"></a>Insert Sort</h2><p>插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.<br>这里使用move,假如数组元素是复杂的类型,使用move效率会高.</p>
+        <h2 id="Insert-Sort"><a href="#Insert-Sort" class="headerlink" title="Insert Sort"></a>Insert Sort</h2><p>插入排序是稳定排序,时间复杂度O(n^2),空间复杂度O(1),效率与输入有关,接近有序时效率较高.<br>这里使用move,假如数组元素是复杂的类型,使用move效率会高.<br>可以使用折半插入提升效率.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++ i)&#123;</span><br><span class="line">  	<span class="keyword">int</span> j = i + <span class="number">1</span>, min_elem = arr[j];</span><br><span class="line">  	<span class="keyword">for</span>(; j &gt; <span class="number">0</span> &amp;&amp; min_elem &lt; arr[j - <span class="number">1</span>]; -- j)&#123;</span><br><span class="line">  		arr[j] = move(arr[j - <span class="number">1</span>]);</span><br><span class="line">  	&#125;</span><br><span class="line">  	arr[j] = move(min_elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -514,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
